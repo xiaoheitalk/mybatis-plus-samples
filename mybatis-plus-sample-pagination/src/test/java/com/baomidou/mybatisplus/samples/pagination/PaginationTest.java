@@ -50,6 +50,7 @@ class PaginationTest {
         log.info("----------------------------------baseMapper 自带分页-------------------------------------------------------");
         Page<User> page = new Page<>(1, 5);
         page.addOrder(OrderItem.asc("age"));
+        page.addOrder(OrderItem.desc("email"));
         Page<User> userIPage = mapper.selectPage(page, Wrappers.<User>lambdaQuery().eq(User::getAge, 20).like(User::getName, "Jack"));
         assertThat(page).isSameAs(userIPage);
         log.info("总条数 -------------> {}", userIPage.getTotal());
@@ -105,18 +106,23 @@ class PaginationTest {
         MyPage<User> myPage = new MyPage<User>(1, 5).setSelectInt(20).setSelectStr("Jack");
         mapper.mySelectPageMap(myPage, Maps.newHashMap("name", "%a"));
         myPage.getRecords().forEach(System.out::println);
+        System.out.println("========================");
+        mapper.mySelectPageMap(myPage, Maps.newHashMap("name", "%ack"));
+        myPage.getRecords().forEach(System.out::println);
     }
 
     @Test
     void testMap() {
-        mapper.mySelectMap(Maps.newHashMap("name", "%a")).forEach(System.out::println);
+        List<User> userList = mapper.mySelectMap(Maps.newHashMap("name", "%a"));
+        userList.forEach(System.out::println);
     }
 
     @Test
     void myPage() {
         MyPage<User> page = new MyPage<>(1, 5);
         page.setName("a");
-        mapper.myPageSelect(page).forEach(System.out::println);
+        List<User> userList = mapper.myPageSelect(page);
+        userList.forEach(System.out::println);
     }
 
     @Test

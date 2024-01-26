@@ -3,7 +3,6 @@ package com.baomidou.samples;
 import com.baomidou.samples.entity.User;
 import com.baomidou.samples.mapper.UserMapper;
 import com.baomidou.samples.service.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import java.util.List;
 /**
  * @author nieqiuqiu 2019/11/30
  */
-@Slf4j
 @SpringBootTest
 public class IdGeneratorTest {
     @Autowired
@@ -30,7 +28,6 @@ public class IdGeneratorTest {
         user.setAge(18);
         userMapper.insert(user);
         Assertions.assertEquals(Long.valueOf(1L), user.getId());
-        log.info("getId={}", user.getId());
 
         testBatch();
     }
@@ -48,6 +45,5 @@ public class IdGeneratorTest {
         }
         boolean result = userService.saveBatch(users);
         Assertions.assertEquals(true, result);
-        users.forEach(System.out::println);
     }
 }

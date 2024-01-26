@@ -49,6 +49,8 @@ class OptLockerTest {
         int i = userMapper.updateById(user);
         assertThat(i).isEqualTo(1);
         assertThat(oldVersion + 1).isEqualTo(user.getVersion());
+        user = userMapper.selectById(1);
+        System.out.println(user.getVersion());
     }
 
     @Order(2)

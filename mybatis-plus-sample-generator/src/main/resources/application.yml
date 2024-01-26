@@ -1,3 +1,4 @@
+# DataSource Config
 spring:
   datasource:
     driver-class-name: org.h2.Driver
@@ -12,9 +13,4 @@ spring:
 # Logger Config
 logging:
   level:
-    com.baomidou.mybatisplus.samples: debug
-
-
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    com.baomidou.samples: debug

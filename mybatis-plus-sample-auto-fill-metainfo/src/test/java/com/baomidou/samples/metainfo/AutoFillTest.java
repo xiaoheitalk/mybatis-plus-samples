@@ -32,6 +32,8 @@ public class AutoFillTest {
         beforeUser.setAge(12);
         userMapper.updateById(beforeUser);
         log.info("query user:{}", userMapper.selectById(1L));
+
+        userMapper.updateById(new User(1L, "Tom", 1, "tom@qq.com", null));
     }
 
     @Test

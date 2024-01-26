@@ -17,3 +17,6 @@ logging:
   level:
     com.baomidou.mybatisplus.samples: debug
 # MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
